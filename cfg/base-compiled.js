@@ -1,13 +1,14 @@
 'use strict';
-let path = require('path');
-let defaultSettings = require('./defaults');
+
+var path = require('path');
+var defaultSettings = require('./defaults');
 
 // Additional npm or bower modules to include in builds
 // Add all foreign plugins you may need into this array
 // @example:
 // let npmBase = path.join(__dirname, '../node_modules');
 // let additionalPaths = [ path.join(npmBase, 'react-bootstrap') ];
-let additionalPaths = [];
+var additionalPaths = [];
 
 module.exports = {
   additionalPaths: additionalPaths,
@@ -30,20 +31,15 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
-      actions: `${defaultSettings.srcPath}/actions/`,
-      components: `${defaultSettings.srcPath}/components/`,
-      sources: `${defaultSettings.srcPath}/sources/`,
-      stores: `${defaultSettings.srcPath}/stores/`,
-      styles: `${defaultSettings.srcPath}/styles/`,
-      config: `${defaultSettings.srcPath}/config/` + process.env.REACT_WEBPACK_ENV
+      actions: defaultSettings.srcPath + '/actions/',
+      components: defaultSettings.srcPath + '/components/',
+      sources: defaultSettings.srcPath + '/sources/',
+      stores: defaultSettings.srcPath + '/stores/',
+      styles: defaultSettings.srcPath + '/styles/',
+      config: defaultSettings.srcPath + '/config/' + process.env.REACT_WEBPACK_ENV
     }
-  },
-  postcss: function () {
-    return [
-      require('autoprefixer')({
-        browsers: ['last 2 versions', 'ie >= 8']
-      })
-    ];
   },
   module: {}
 };
+
+//# sourceMappingURL=base-compiled.js.map
