@@ -2,6 +2,8 @@ require('normalize.css/normalize.css');
 require('styles/App.css');
 
 import React from 'react';
+// 导入自定义组件
+import ImgFigure from './ImgFigureComponent';
 
 // 获取图片相关的数据
 let imageDatas = require('../sources/imageDatas.json');
@@ -18,13 +20,21 @@ imageDatas = (function genImageURL(imageDatasArr) {
 
 class AppComponent extends React.Component {
   render() {
+
+    var controllerUnits = [],
+        imgFigures = [];
+
+    imageDatas.forEach(function (value) {
+      imgFigures.push(<ImgFigure data={ value } />)
+    });
+
     return (
       <section className="stage">
         <section className="img-sec">
-
+          { imgFigures }
         </section>
         <nav className="controller-nav">
-
+          { controllerUnits }
         </nav>
       </section>
     );
