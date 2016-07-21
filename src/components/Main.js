@@ -181,6 +181,11 @@ class AppComponent extends React.Component {
         halfImgW = Math.ceil(imgW / 2),
         halfImgH = Math.ceil(imgH / 2);
 
+    // 计算出偏移量 => 防止中心图片旋转时的 transform 使用致使 z-index 失效
+    var temp = Math.sqrt(Math.pow(imgW, 2) + Math.pow(imgH, 2));
+    var deltaH = temp - imgH;
+    var deltaW = temp - imgW;
+
     // 计算中心图片的位置点
     Constant.centerPos = {
       left: halfStageW - halfImgW,
@@ -188,16 +193,16 @@ class AppComponent extends React.Component {
     };
 
     // 计算左侧、右侧区域的位置点
-    Constant.hPosRange.leftSecX[0] = -halfImgW;
-    Constant.hPosRange.leftSecX[1] = halfStageW - halfImgW * 3;
-    Constant.hPosRange.rightSecX[0] = halfStageW + halfImgW;
-    Constant.hPosRange.rightSecX[1] = stageW - halfImgW;
+    Constant.hPosRange.leftSecX[0] = -halfImgW - deltaW;
+    Constant.hPosRange.leftSecX[1] = halfStageW - halfImgW * 3 - deltaW;
+    Constant.hPosRange.rightSecX[0] = halfStageW + halfImgW + deltaW;
+    Constant.hPosRange.rightSecX[1] = stageW - halfImgW + deltaW;
     Constant.hPosRange.y[0] = -halfImgH;
     Constant.hPosRange.y[1] = stageH - halfImgH;
 
     // 计算上区域的位置点
-    Constant.vPosRange.topY[0] = -halfImgH;
-    Constant.vPosRange.topY[1] = halfStageH - halfImgH * 3;
+    Constant.vPosRange.topY[0] = -halfImgH - deltaH;
+    Constant.vPosRange.topY[1] = halfStageH - halfImgH * 3 - deltaH;
     Constant.vPosRange.x[0] = halfStageW - imgW;
     Constant.vPosRange.x[1] = halfStageW;
 
