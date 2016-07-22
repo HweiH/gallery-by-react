@@ -3,7 +3,7 @@
 This project is generated with [yo react-webpack generator](https://github.com/yeoman/generator-angular)
 version 3.3.2
 
-## Build & Development & Testing
+## Build & Development & Testing & Distribution
 
     # Start for development
     npm start # or
@@ -29,7 +29,9 @@ version 3.3.2
     
     # Just copy the static assets
     npm run copy
+    
+    # When finish dist, please edit the 'index.html', JS src, the absolute path to the relative.
 
-##### *You should init: `npm install`*
+##### *You should init: `npm install`*  
 
 > [*http://www.imooc.com/index/search?words=react*](http://www.imooc.com/index/search?words=react) -- Powerby [*Yeoman*](http://yeoman.io/)
