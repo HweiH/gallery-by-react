@@ -4,6 +4,7 @@ require('styles/App.css');
 import React from 'react';
 // 导入自定义组件
 import ImgFigure from './ImgFigureComponent';
+import ControllerUnit from './ControllerUnitComponent';
 
 // 获取图片相关的数据
 let imageDatas = require('../sources/datas/imageDatas.json');
@@ -233,13 +234,23 @@ class AppComponent extends React.Component {
       imgFigures.push(
         <ImgFigure
           data={ value }
-          key={ 'imgFigure' + index }
+          key={ index }
           ref={ 'imgFigure' + index }
           arrange={ this.state.imgsArrangeArr[index] }
           inverse={ this.inverse(index) }
           center={ this.center(index) }
         />
       );
+      // 添加控制单元
+      controllerUnits.push(
+        <ControllerUnit
+          key={ index }
+          arrange={ this.state.imgsArrangeArr[index] }
+          inverse={ this.inverse(index) }
+          center={ this.center(index) }
+        />
+      );
+
     }.bind(this));
 
     return (
